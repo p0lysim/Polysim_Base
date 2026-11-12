@@ -11,7 +11,7 @@
 
 ![Polysim Base joystick mounted on a desk in front of a flight simulator](doc/images/header.jpg)
 
-[**Build manual**](doc/MANUAL.md) · [Assembly guide (PDF)](doc/Polysim_Base_Assembly_Guide.pdf) · [polysim.fr](https://polysim.fr)
+[**📦 Get the complete kit**](https://polysim.fr) · [**Build manual**](doc/MANUAL.md) · [Assembly guide (PDF)](doc/Polysim_Base_Assembly_Guide.pdf)
 
 </div>
 
@@ -19,7 +19,7 @@
 
 ## Overview
 
-Polysim is a modular joystick for flight and space simulators, designed end to end: mechanics, electronics, firmware and configuration software. The system has three parts:
+Polysim is a modular joystick for flight and space simulators, designed end to end: mechanics, electronics, firmware and configuration software. Build it from the open files, or order the **[complete component kit](https://polysim.fr)** and just assemble it. The system has three parts:
 
 | | Module | What it is |
 |---|---|---|
@@ -51,16 +51,15 @@ Polysim is a modular joystick for flight and space simulators, designed end to e
 
 ## Build overview
 
-> **Skill level: advanced.** You will 3D print, order laser-cut steel and SLS/MJF parts, and program AVR microcontrollers with an ISP programmer.
+> 📦 **Skip the sourcing.** The **complete kit with every component** is available on **[polysim.fr](https://polysim.fr)**. Just assemble and fly.
 
-1. **Gather the parts.** See the [bill of materials](doc/MANUAL.md#3-bill-of-materials).
-2. **Manufacture.** Print the FDM parts, order the MJF main shaft and the laser-cut plates, and cast the silicone boot. See [§4](doc/MANUAL.md#4-manufacturing-the-parts).
-3. **Program the boards.** Burn the bootloader once over ICSP, then flash the firmware. See [§6](doc/MANUAL.md#6-programming-the-boards).
-4. **Assemble.** Follow base steps 0 to 9, then the grip and the bracket. See [§7](doc/MANUAL.md#7-assembly) and the video tutorials for the [base](https://www.youtube.com/watch?v=ZJVehHBs4Xg) and the [grip](https://www.youtube.com/watch?v=2aSrMxbHL8U).
-5. **Install the software and calibrate.** See [§8](doc/MANUAL.md#8-configuration-software).
-6. **Fly.** Bind the axes in your simulator. See [§9](doc/MANUAL.md#9-using-polysim-in-simulators).
+1. **Parts.** Use the [bill of materials](doc/MANUAL.md#3-bill-of-materials), or get the [complete kit](https://polysim.fr).
+2. **Manufacture.** Print the FDM parts and order the MJF shaft and the laser-cut plates ([§4](doc/MANUAL.md#4-manufacturing-the-parts)).
+3. **Program.** Bootloader, then firmware ([§6](doc/MANUAL.md#6-programming-the-boards)).
+4. **Assemble.** Base, grip, then bracket ([§7](doc/MANUAL.md#7-assembly)), with video tutorials for the [base](https://www.youtube.com/watch?v=ZJVehHBs4Xg) and the [grip](https://www.youtube.com/watch?v=2aSrMxbHL8U).
+5. **Calibrate and fly** ([§8](doc/MANUAL.md#8-configuration-software), [§9](doc/MANUAL.md#9-using-polysim-in-simulators)).
 
-**Indicative material cost** at the author's bulk prices (2024–2025): about €111 for the base, €16 for a grip (excluding filament) and €27 for the bracket (excluding the steel plates). A one-off build costs more because of minimum order quantities, shipping and PCB assembly.
+Advanced DIY build. Materials cost about €155 at bulk prices, or you can get everything in one box with the [kit](https://polysim.fr).
 
 ## Software and firmware
 
@@ -89,6 +88,8 @@ The design files, documentation and Polysim firmware are licensed under **[Creat
 This is a do-it-yourself project, provided **as is**, without warranty of any kind. You build and use it at your own risk. Read the safety notes in the [manual](doc/MANUAL.md#13-safety-and-disclaimer) before you start.
 
 <div align="center">
+
+**Complete kits available on [polysim.fr](https://polysim.fr)**
 
 © 2024–2026 Polysim
 

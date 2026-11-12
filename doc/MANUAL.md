@@ -77,6 +77,8 @@ The grip is an **I²C slave** (address `0x55`). The base polls it continuously t
 
 ## 3. Bill of materials
 
+> 📦 **Don't want to source the parts yourself?** All the components below are available as a **complete kit** on [polysim.fr](https://polysim.fr).
+
 ### 3.1 Manufactured parts
 
 | Part | Qty | Process | Source file |
