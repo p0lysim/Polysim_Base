@@ -359,6 +359,8 @@ The grip firmware only needs the standard `Wire` library.
 
 ### 7.2 Base
 
+> 🎬 **Video tutorial:** [Flight sim base — assembly tutorial](https://www.youtube.com/watch?v=ZJVehHBs4Xg) (full assembly, step by step) · [Quick assembly (Short)](https://www.youtube.com/shorts/dEi8qn8T1VA)
+
 Follow [Polysim_Base_Assembly_Guide.pdf](Polysim_Base_Assembly_Guide.pdf). PDF step *n* is on page *n + 1*. The parts needed for each step:
 
 | PDF step | What happens | Parts |
@@ -377,6 +379,8 @@ Follow [Polysim_Base_Assembly_Guide.pdf](Polysim_Base_Assembly_Guide.pdf). PDF s
 Before you close the base in step 9, connect the female jack wires to the `GRIP_A` terminal of the encoder Y board (§5.3).
 
 ### 7.3 Grip
+
+> 🎬 **Video tutorial:** [Flight sim grip G1 — assembly tutorial](https://www.youtube.com/watch?v=2aSrMxbHL8U)
 
 Use `hardware/STEP/Grip G1.step` (or `Grip G2.step`) as the reference for part placement.
 

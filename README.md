@@ -9,9 +9,9 @@
 ![Software](https://img.shields.io/badge/software-v0.1%20%C2%B7%20Windows%20x64-2b6cb0)
 ![Build](https://img.shields.io/badge/build-DIY%20%C2%B7%20advanced-orange)
 
-![Polysim Base mounted on a desk](doc/images/hero_desk.jpg)
+![Polysim Base joystick mounted on a desk in front of a flight simulator](doc/images/header.jpg)
 
-[**Build manual**](doc/MANUAL.md) · [Assembly guide (PDF)](doc/Polysim_Base_Assembly_Guide.pdf) · [Grip repository](https://github.com/p0lysim/Polysim_Grip) · [polysim.fr](https://polysim.fr)
+[**Build manual**](doc/MANUAL.md) · [Assembly guide (PDF)](doc/Polysim_Base_Assembly_Guide.pdf) · [polysim.fr](https://polysim.fr)
 
 </div>
 
@@ -23,51 +23,31 @@ Polysim is a modular joystick for flight and space simulators, designed end to e
 
 | | Module | What it is |
 |---|---|---|
-| ![Base](doc/images/base_3-4.jpg) | **Base** | 2-axis gimbal built from 5 mm laser-cut stainless steel plates, ball bearings and an MJF/SLS main shaft. Cams and springs centre it, felt brakes add adjustable friction, and a moulded silicone boot covers the top. |
-| ![Grip](doc/images/grip_3-4.jpg) | **Grip G1 / G2** | Removable handle with an illuminated push button and an analog mini-stick. It locks with a knurled ring and connects through a 4-pole jack. |
-| ![Bracket](doc/images/bracket_3-4.jpg) | **Bracket** | Desk-edge mount made of bent 5 mm steel plates with a toggle clamp and adjustable height. |
+| ![Base](doc/images/base_3-4.jpg) | **Base** | 2-axis gimbal built from 5 mm laser-cut stainless steel plates, ball bearings and an MJF/SLS main shaft. Cams and springs centre it, felt brakes add adjustable friction, and a moulded silicone boot covers the top.<br>**[View in the shop →](https://polysim.fr/products/polysim-base)** |
+| ![Grip](doc/images/grip_3-4.jpg) | **Grip G1 / G2** | Removable handle with an illuminated push button and an analog mini-stick. It locks with a knurled ring and connects through a 4-pole jack.<br>**[View in the shop →](https://polysim.fr/products/polysim-grip-3d-printable-kit)** |
+| ![Bracket](doc/images/bracket_3-4.jpg) | **Bracket** | Desk-edge mount made of bent 5 mm steel plates with a toggle clamp and adjustable height.<br>**[View in the shop →](https://polysim.fr/products/poysim-base-support)** |
 
 ## Features
 
-- **Contactless 12-bit magnetic sensors (AS5600).** There are no potentiometer tracks to wear out.
-- **Full resolution on the real travel.** The calibrated range is programmed into the sensors, saved in EEPROM and restored at every power-up.
-- **Rigid metal gimbal.** Stainless steel plates, ball bearings and an MJF/SLS shaft.
-- **Self-centering with adjustable feel.** Cam and spring centering, plus felt friction brakes.
-- **Plug and play.** A native USB HID joystick on USB-C, with no driver needed.
-- **Quick-release grips.** The grips use an **open I²C protocol**, documented in the manual, so you can design your own.
-- **Windows configuration app.** Guided calibration of the base and grip, a live position view and one-click firmware updates.
+<div align="center">
 
-## Specifications
+| **±20°** | **12-bit** | **5 mm steel** | **0 driver** |
+|:---:|:---:|:---:|:---:|
+| travel on each axis | contactless sensors | stainless gimbal | native USB HID |
 
-| | |
-|---|---|
-| Axes | 2 on the base (roll, pitch) + 2 on the grip mini-stick |
-| Sensors | AS5600 magnetic, 12-bit, range scaled to the mechanical travel |
-| HID report | X / Y 0–4096 · Rx / Ry 0–1023 · 32 buttons declared (2 used by the standard grip) |
-| Controllers | Base: ATmega32U4 (native USB) · Grip: ATmega328P (I²C slave `0x55`) |
-| Connections | USB-C to PC · 4-pole jack between grip and base |
-| Structure | 5 mm stainless steel plates, MJF/SLS main shaft, FDM-printed housing |
-| Software | Windows 10 / 11, 64-bit |
+</div>
 
-## Repository structure
+- **Wear-free precision.** AS5600 magnetic sensors spread their full 12-bit resolution over the real travel of the stick.
+- **Built to last.** Stainless steel plates, ball bearings and an MJF shaft, with cam and spring centering and adjustable felt brakes.
+- **Plug and fly.** Connect it over USB-C and Windows sees a standard joystick. The calibration stays in the base.
+- **Swap grips in seconds.** A quick-release jack and an open I²C protocol let you build your own grip.
+- **Companion app.** Guided calibration, a live position view and one-click firmware updates.
 
-```text
-Polysim_Base/
-├── hardware/
-│   ├── STL/        3D-printable parts, grouped by assembly step (base, grips G1/G2, SLS parts)
-│   ├── DXF/        Cutting files: stainless base plates (laser) and bracket plates (plasma)
-│   ├── STEP/       CAD assemblies: base, grips G1/G2, bracket, silicone-boot mould
-│   └── 3MF/        Print-ready plates (coming soon)
-├── software/
-│   ├── installer/  Polysim configuration software (Windows x64 installer)
-│   └── firmware/
-│       ├── base/   Base firmware: PlatformIO project (ATmega32U4) + prebuilt .hex
-│       └── grip/   Grip firmware: Arduino sketch (ATmega328P)
-└── doc/
-    ├── MANUAL.md                        Complete build and user manual
-    ├── Polysim_Base_Assembly_Guide.pdf  Illustrated exploded views, steps 0–9
-    └── images/                          Renders, screenshots, print-orientation references
-```
+## Videos
+
+| Quick assembly (Short) | Base assembly — full tutorial | Grip assembly — full tutorial |
+|:---:|:---:|:---:|
+| <a href="https://www.youtube.com/shorts/dEi8qn8T1VA"><img src="https://img.youtube.com/vi/dEi8qn8T1VA/hqdefault.jpg" alt="Quick assembly of the Polysim base" width="260"></a> | <a href="https://www.youtube.com/watch?v=ZJVehHBs4Xg"><img src="https://img.youtube.com/vi/ZJVehHBs4Xg/hqdefault.jpg" alt="Polysim base assembly tutorial" width="260"></a> | <a href="https://www.youtube.com/watch?v=2aSrMxbHL8U"><img src="https://img.youtube.com/vi/2aSrMxbHL8U/hqdefault.jpg" alt="Polysim grip G1 assembly tutorial" width="260"></a> |
 
 ## Build overview
 
@@ -76,7 +56,7 @@ Polysim_Base/
 1. **Gather the parts.** See the [bill of materials](doc/MANUAL.md#3-bill-of-materials).
 2. **Manufacture.** Print the FDM parts, order the MJF main shaft and the laser-cut plates, and cast the silicone boot. See [§4](doc/MANUAL.md#4-manufacturing-the-parts).
 3. **Program the boards.** Burn the bootloader once over ICSP, then flash the firmware. See [§6](doc/MANUAL.md#6-programming-the-boards).
-4. **Assemble.** Follow base steps 0 to 9, then the grip and the bracket. See [§7](doc/MANUAL.md#7-assembly).
+4. **Assemble.** Follow base steps 0 to 9, then the grip and the bracket. See [§7](doc/MANUAL.md#7-assembly) and the video tutorials for the [base](https://www.youtube.com/watch?v=ZJVehHBs4Xg) and the [grip](https://www.youtube.com/watch?v=2aSrMxbHL8U).
 5. **Install the software and calibrate.** See [§8](doc/MANUAL.md#8-configuration-software).
 6. **Fly.** Bind the axes in your simulator. See [§9](doc/MANUAL.md#9-using-polysim-in-simulators).
 
@@ -87,22 +67,14 @@ Polysim_Base/
 | Component | Version | Location |
 |---|---|---|
 | Configuration software (Windows x64) | 0.1 | [`software/installer/Polysim_0_1.exe`](software/installer/) |
-| Base firmware (ATmega32U4) | 0.0.4 | [`software/firmware/base/`](software/firmware/base/) · prebuilt: `prebuilt/polysim_base_v0.0.4.hex` |
+| Base firmware (ATmega32U4) | 0.0.4 | [`software/firmware/base/`](software/firmware/base/) |
 | Grip firmware (ATmega328P) | — | [`software/firmware/grip/`](software/firmware/grip/) |
 
 Once a base is running, the configuration software can update its firmware over USB from the Polysim update server.
 
-## Electronics
-
-The base uses four custom boards: a base controller with an I²C multiplexer, two magnetic-encoder boards and a grip board. The architecture, wiring and ICSP pinouts are documented in the [manual](doc/MANUAL.md#5-electronics). The PCB fabrication files are not part of this repository.
-
 ## Related projects
 
 - [**Polysim_Grip**](https://github.com/p0lysim/Polysim_Grip): CAD files for designing your own Polysim grip.
-
-## Feedback
-
-Bug reports, print feedback, photos of your build and grip designs are welcome. Please [open an issue](https://github.com/p0lysim/Polysim_Base/issues). For a software problem, attach the log file from `%LOCALAPPDATA%\Polysim\Logs\logs.txt`.
 
 ## License
 
