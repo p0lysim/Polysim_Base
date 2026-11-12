@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 44" width="236" height="44" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Buy the kit on polysim.fr</title>
+  <rect x="1" y="1" width="234" height="42" rx="21" fill="#1f6feb"/>
+  <g transform="translate(20 12)" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1 2 H5 L8 15 H19 L22 6 H6.5"/>
+    <circle cx="9.5" cy="19.5" r="1.7" fill="#ffffff"/>
+    <circle cx="18" cy="19.5" r="1.7" fill="#ffffff"/>
+  </g>
+  <text x="54" y="27.5" font-size="15" font-weight="700" fill="#ffffff">Buy the kit · polysim.fr</text>
+</svg>

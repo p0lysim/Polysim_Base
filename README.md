@@ -23,9 +23,9 @@ A modular flight-sim joystick in three parts. Build it from the open files, or g
 
 | | Module | What it is |
 |---|---|---|
-| ![Base](doc/images/base_3-4.jpg) | **Base** | 2-axis gimbal built from 5 mm laser-cut stainless steel plates, ball bearings and an MJF/SLS main shaft. Cams and springs centre it, felt brakes add adjustable friction, and a moulded silicone boot covers the top.<br>**[View in the shop →](https://polysim.fr/products/polysim-base)** |
-| ![Grip](doc/images/grip_3-4.jpg) | **Grip G1 / G2** | Removable handle with an illuminated push button and an analog mini-stick. It locks with a knurled ring and connects through a 4-pole jack.<br>**[View in the shop →](https://polysim.fr/products/polysim-grip-3d-printable-kit)** |
-| ![Bracket](doc/images/bracket_3-4.jpg) | **Bracket** | Desk-edge mount made of bent 5 mm steel plates with a toggle clamp and adjustable height.<br>**[View in the shop →](https://polysim.fr/products/poysim-base-support)** |
+| ![Base](doc/images/base_3-4.jpg) | **Base** | 2-axis gimbal built from 5 mm laser-cut stainless steel plates, ball bearings and an MJF/SLS main shaft. Cams and springs centre it, felt brakes add adjustable friction, and a moulded silicone boot covers the top.<br><br><a href="https://polysim.fr/products/polysim-base"><img src="doc/images/buy-kit.svg" alt="Buy the Polysim Base kit on polysim.fr" width="200"></a> |
+| ![Grip](doc/images/grip_3-4.jpg) | **Grip G1 / G2** | Removable handle with an illuminated push button and an analog mini-stick. It locks with a knurled ring and connects through a 4-pole jack.<br><br><a href="https://polysim.fr/products/polysim-grip-3d-printable-kit"><img src="doc/images/buy-kit.svg" alt="Buy the Polysim Grip kit on polysim.fr" width="200"></a> |
+| ![Bracket](doc/images/bracket_3-4.jpg) | **Bracket** | Desk-edge mount made of bent 5 mm steel plates with a toggle clamp and adjustable height.<br><br><a href="https://polysim.fr/products/poysim-base-support"><img src="doc/images/buy-kit.svg" alt="Buy the Polysim bracket on polysim.fr" width="200"></a> |
 
 ## Features
 
@@ -96,7 +96,5 @@ This is a do-it-yourself project, provided **as is**, without warranty of any ki
 <div align="center">
 
 **Complete kits available on [polysim.fr](https://polysim.fr)**
-
-© 2024–2026 Polysim
 
 </div>
