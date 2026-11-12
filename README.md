@@ -19,7 +19,7 @@
 
 ## Overview
 
-Polysim is a modular joystick for flight and space simulators, designed end to end: mechanics, electronics, firmware and configuration software. Build it from the open files, or order the **[complete component kit](https://polysim.fr)** and just assemble it. The system has three parts:
+A modular flight-sim joystick in three parts. Build it from the open files, or get the **[complete kit](https://polysim.fr)**.
 
 | | Module | What it is |
 |---|---|---|
@@ -51,17 +51,18 @@ Polysim is a modular joystick for flight and space simulators, designed end to e
 
 ## Build overview
 
-> 📦 **Skip the sourcing.** The **complete kit with every component** is available on **[polysim.fr](https://polysim.fr)**. Just assemble and fly.
+> 📦 **Skip the sourcing.** Print the FDM parts, then get every other component in the **complete kit** on **[polysim.fr](https://polysim.fr)**. Just assemble and fly.
 
-1. **Parts.** Use the [bill of materials](doc/MANUAL.md#3-bill-of-materials), or get the [complete kit](https://polysim.fr).
-2. **Manufacture.** Print the FDM parts and order the MJF shaft and the laser-cut plates ([§4](doc/MANUAL.md#4-manufacturing-the-parts)).
-3. **Program.** Bootloader, then firmware ([§6](doc/MANUAL.md#6-programming-the-boards)).
-4. **Assemble.** Base, grip, then bracket ([§7](doc/MANUAL.md#7-assembly)), with video tutorials for the [base](https://www.youtube.com/watch?v=ZJVehHBs4Xg) and the [grip](https://www.youtube.com/watch?v=2aSrMxbHL8U).
-5. **Calibrate and fly** ([§8](doc/MANUAL.md#8-configuration-software), [§9](doc/MANUAL.md#9-using-polysim-in-simulators)).
+1. **Print and get the kit.** Print the FDM parts, then get the [kit](https://polysim.fr) to assemble your base. The files for all the non-printable parts are also in this repository ([§4](doc/MANUAL.md#4-manufacturing-the-parts)).
+2. **Program.** Already done with the electronics kit. Otherwise, flash the bootloader, then the firmware ([§6](doc/MANUAL.md#6-programming-the-boards)).
+3. **Assemble.** Base, grip, then bracket ([§7](doc/MANUAL.md#7-assembly)), with video tutorials for the [base](https://www.youtube.com/watch?v=ZJVehHBs4Xg) and the [grip](https://www.youtube.com/watch?v=2aSrMxbHL8U).
+4. **Calibrate and fly** ([§8](doc/MANUAL.md#8-configuration-software), [§9](doc/MANUAL.md#9-using-polysim-in-simulators)).
 
-Advanced DIY build. Materials cost about €155 at bulk prices, or you can get everything in one box with the [kit](https://polysim.fr).
+Advanced DIY build. Materials cost about €155 at bulk prices, or you can get all the non-printed parts in one box with the [kit](https://polysim.fr).
 
 ## Software and firmware
+
+> ✅ **Electronics kit from [polysim.fr](https://polysim.fr)?** The base and grip boards ship with their firmware already flashed. Just install the configuration software and calibrate.
 
 | Component | Version | Location |
 |---|---|---|
@@ -73,7 +74,12 @@ Once a base is running, the configuration software can update its firmware over 
 
 ## Related projects
 
-- [**Polysim_Grip**](https://github.com/p0lysim/Polysim_Grip): CAD files for designing your own Polysim grip.
+<table>
+  <tr>
+    <td><a href="https://github.com/p0lysim/Polysim_Grip"><img src="doc/images/grip_3-4.jpg" alt="Polysim grip" width="140"></a></td>
+    <td><a href="https://github.com/p0lysim/Polysim_Grip"><b>Polysim_Grip</b></a>: CAD files for designing your own Polysim grip.</td>
+  </tr>
+</table>
 
 ## License
 

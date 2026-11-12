@@ -77,7 +77,7 @@ The grip is an **I²C slave** (address `0x55`). The base polls it continuously t
 
 ## 3. Bill of materials
 
-> 📦 **Don't want to source the parts yourself?** All the components below are available as a **complete kit** on [polysim.fr](https://polysim.fr).
+> 📦 **Don't want to source the parts yourself?** Print the FDM parts and get all the other components below as a **complete kit** on [polysim.fr](https://polysim.fr).
 
 ### 3.1 Manufactured parts
 
@@ -297,6 +297,8 @@ Every 4-wire link carries **VCC (5 V), GND, SDA, SCL**. Always match the labels 
 ---
 
 ## 6. Programming the boards
+
+> ✅ **Electronics kit from [polysim.fr](https://polysim.fr)?** The base and grip boards are delivered with their firmware already flashed. Skip this section and go to [§7](#7-assembly).
 
 A blank ATmega32U4 or ATmega328P does **not** contain a bootloader. Each board must be programmed **once** through its ICSP header with an ISP programmer. After that, the base can be updated over USB.
 
