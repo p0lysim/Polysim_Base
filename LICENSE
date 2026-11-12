@@ -1,0 +1,56 @@
+Polysim Base
+Copyright (c) 2024-2026 Polysim
+
+======================================================================
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+(CC BY-NC-SA 4.0)
+======================================================================
+
+Unless otherwise noted below, the contents of this repository are licensed
+under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+International License. This includes:
+
+  - the mechanical design files in /hardware (STL, STEP, DXF, 3MF),
+  - the documentation and images in /doc,
+  - the Polysim firmware source code in /software/firmware
+    (excluding the third-party library listed below).
+
+Summary (this summary is not a substitute for the license):
+
+  You may copy, redistribute, remix, transform and build upon this
+  material, provided that you:
+
+  - Attribution: give appropriate credit to Polysim, link to the license
+    and indicate if changes were made;
+  - NonCommercial: do not use the material for commercial purposes;
+  - ShareAlike: distribute your contributions under the same license.
+
+Full legal code: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+----------------------------------------------------------------------
+Commercial use
+----------------------------------------------------------------------
+
+Selling assembled joysticks, kits, printed or machined parts, or any
+other product made from these files requires prior written permission
+from Polysim. Contact: https://polysim.fr
+
+----------------------------------------------------------------------
+Exceptions
+----------------------------------------------------------------------
+
+1. software/firmware/base/lib/ArduinoJoystickLibrary/
+   Copyright (c) Matthew Heironimus. Licensed under the GNU Lesser General
+   Public License v3.0. See the LICENSE file in that folder.
+
+2. software/installer/Polysim_0_1.exe
+   The Polysim configuration software is distributed as freeware under its
+   own end-user license agreement, displayed during installation. It is
+   NOT covered by the Creative Commons license above.
+
+3. Other third-party components are listed in THIRD_PARTY_NOTICES.md,
+   with their respective licenses.
+
+The "Polysim" name and logo are not licensed under CC BY-NC-SA 4.0 and
+may not be used to identify derivative works without permission.

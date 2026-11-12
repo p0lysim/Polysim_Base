@@ -1,0 +1,16 @@
+# Operating system files
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# PlatformIO build output
+.pio/
+
+# Editors (keep recommended extensions only)
+**/.vscode/*
+!**/.vscode/extensions.json
+
+# Temporary and backup files
+*.tmp
+*.bak
+~$*

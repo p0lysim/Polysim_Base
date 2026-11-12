@@ -1,0 +1,20 @@
+# Normalise line endings of text files
+* text=auto
+
+# CAD and manufacturing files: keep them byte-for-byte
+*.step -text
+*.stp  -text
+*.dxf  -text
+*.stl  binary
+*.3mf  binary
+
+# Firmware and binaries
+*.hex  -text
+*.exe  binary
+*.zip  binary
+
+# Documents and images
+*.pdf  binary
+*.png  binary
+*.PNG  binary
+*.jpg  binary
