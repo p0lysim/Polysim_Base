@@ -169,6 +169,8 @@ At the author's 2024–2025 bulk purchase prices, the material cost was about **
 
 ### 4.1 FDM printed parts
 
+> 🖨️ **Bambu Lab printer?** A print-ready project with all the print settings is in [`hardware/3MF/Bambulab P2S PLA.3mf`](../hardware/3MF/) (Bambu Lab P2S, PLA, 5 plates).
+
 The STL files are grouped by assembly stage in `hardware/STL/Base/STEP_1` … `STEP_9`. If you are unsure where a part goes, open `hardware/STEP/Base.step` in any CAD viewer.
 
 | Folder | Files |
