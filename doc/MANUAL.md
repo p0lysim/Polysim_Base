@@ -101,60 +101,7 @@ Full list: [bill_of_material_source_yourself.md](bill_of_material_source_yoursel
 
 ## 5. Electronics
 
-### 5.1 Architecture
-
-```mermaid
-flowchart LR
-    subgraph GRIP["Grip"]
-        BTN["16 mm push button<br/>(NC contact + LED)"] --> MCU2
-        STICK["Analog mini-stick<br/>+ click (FPC 5-pin)"] --> MCU2
-        MCU2["ATmega328P<br/>I²C slave 0x55"]
-    end
-    subgraph BASE["Base"]
-        ENCX["Encoder X board<br/>AS5600 (0x36)"]
-        ENCY["Encoder Y board<br/>AS5600 (0x36)<br/>+ GRIP_A screw terminal"]
-        MUX["PCA9548A<br/>I²C multiplexer (0x70)"]
-        MCU["ATmega32U4<br/>native USB"]
-        MCU -- "I²C" --> MUX
-        MUX -- "channel 1" --> ENCX
-        MUX -- "channel 0" --> ENCY
-        MUX -- "channel 2" --> MCU2
-    end
-    MCU2 -. "4-pole jack<br/>VCC · GND · SDA · SCL" .- ENCY
-    MCU == "USB-C<br/>HID joystick + serial port" ==> PC["Windows PC"]
-```
-
-### 5.2 The boards
-
-| Board | Main parts | Connectors |
-|---|---|---|
-| **Base controller** | ATmega32U4 (16 MHz crystal), PCA9548A I²C multiplexer, USB-C, 500 mA resettable fuse, reset button, status LEDs | `ENC_X`, `ENC_Y`, `GRIP_B` (JST PH 4-pin), ICSP 2×3 header |
-| **Encoder X** | AS5600 magnetic sensor, I²C pull-ups | 1 × JST PH 4-pin |
-| **Encoder Y** | AS5600 magnetic sensor, I²C pull-ups | 2 × JST PH 4-pin (pass-through of the grip bus) and a 4-way screw terminal `GRIP_A` for the jack wires |
-| **Grip** | ATmega328P (16 MHz crystal), MT3608 boost converter, reset button, LEDs | FPC 5-pin 0.5 mm (mini-stick), `GRIP_A` and `BTN` (JST PH 4-pin), ICSP 2×3 header |
-
-### 5.3 Wiring
-
-Every 4-wire link carries **VCC (5 V), GND, SDA, SCL**. Always match the labels printed on the boards.
-
-| From | To | Cable |
-|---|---|---|
-| Base controller `ENC_X` | Encoder X board | JST PH 4-pin |
-| Base controller `ENC_Y` | Encoder Y board | JST PH 4-pin |
-| Encoder Y board (second JST) | Base controller `GRIP_B` | JST PH 4-pin |
-| Female jack in the base | Encoder Y board `GRIP_A` screw terminal | 4 wires |
-| Grip board `GRIP_A` | Male jack in the grip | JST PH 4-pin to jack |
-| Push button | Grip board `BTN` | JST PH 4-pin |
-| Mini-stick | Grip board FPC connector | FPC ribbon |
-| Base controller USB-C | PC | USB-C to USB-A, 2 m |
-
-**Push button wiring.** The 16 mm button has four connections: **+** (LED +), **C** (common), **−** (LED −) and **NC** (normally closed contact).
-
-![Button wiring](images/grip_button_wiring.png)
-
-**Magnets.** Glue one 5×2 mm diametrically magnetised magnet, centred, at the end of each gimbal axle (PDF steps 0 and 3). Each encoder board is screwed facing its magnet (PDF step 6). A magnet that is off-centre or too far from the AS5600 gives noisy or non-linear readings.
-
-> **Note.** The grip I²C bus runs through a jack and a cable, so it is sensitive to cable length and interference. The firmware uses a 3 ms I²C timeout with automatic bus reset, so an unplugged grip does not freeze the base. Even so, **unplug the USB cable before you connect or disconnect the grip.**
+<img src="images/wiring.svg" alt="How the PCBs connect: thumb stick on CN1 and side button on U7 of the grip PCB, grip U5 to GRIP_IN on the Y encoder PCB, GRIP OUT to GRIP on the base PCB, X and Y encoders on ENC_X and ENC_Y, base to the PC over USB-C" width="900">
 
 ---
 
@@ -239,10 +186,10 @@ Follow [Polysim_Base_Assembly_Guide.pdf](Polysim_Base_Assembly_Guide.pdf). PDF s
 | **5** | Second spring, large and small plates | Spring ×1, large plate ×1, small plate ×1, M4×60 ×1, M4×25 ×3, M4×30 ×5, M4 nylon washer ×2, M4 square nut ×2, M4 insert ×1 |
 | **6** | Encoder boards | Encoder X board ×1, encoder Y board ×1, encoder Y cable ×1, M3×8 ×7, M3 nylon washer ×7 |
 | **7** | Base board in the housing | Base board ×1, M3×8 ×4, M3 nylon washer ×4, M3 insert ×4 |
-| **8** | Encoder cables | Base ↔ encoder cables ×2 (see §5.3) |
+| **8** | Encoder cables | Base ↔ encoder cables ×2 (see §5) |
 | **9** | Closing | Bottom plate ×1, top plate ×1, dummy plate ×1, silicone boot ×1, M8×90 ×4, M4×25 ×6, M4×20 (or M4×18) ×2, M4×6 (or M4×8) ×5 |
 
-Before you close the base in step 9, connect the female jack wires to the `GRIP_A` terminal of the encoder Y board (§5.3).
+Before you close the base in step 9, connect the female jack wires to the `GRIP_A` terminal of the encoder Y board (§5).
 
 ### 7.3 Grip
 
@@ -252,7 +199,7 @@ Use `hardware/STEP/Grip G1.step` (or `Grip G2.step`) as the reference for part p
 
 1. Install the 12 M3 inserts in the printed parts.
 2. Program the grip board (§6.3).
-3. Wire the push button to the `BTN` connector (§5.3) and the mini-stick to the FPC connector.
+3. Wire the push button to the `BTN` connector (§5) and the mini-stick to the FPC connector.
 4. Mount the board on the PCB spacer (2 × M3×10), then install the spacer in the body.
 5. Fit the push button and the mini-stick in the top plate, then close the top of the grip.
 6. Mount the junction and the linker that carry the **male jack**, and connect the jack to the board's `GRIP_A` connector.
