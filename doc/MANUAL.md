@@ -74,77 +74,28 @@ Prefer to source everything yourself? The full list of parts, hardware and indic
 
 ## 4. Manufacturing the parts
 
-With the kit, you only need to print the FDM parts (§4.1). Sections 4.2 to 4.6 are for builders who source everything themselves.
-
 ### 4.1 FDM printed parts
 
-> 🖨️ **Bambu Lab printer?** A print-ready project with all the print settings is in [`hardware/3MF/Bambulab P2S PLA.3mf`](../hardware/3MF/) (Bambu Lab P2S, PLA, 5 plates).
+Open [`hardware/3MF/Bambulab P2S PLA.3mf`](../hardware/3MF/) in Bambu Studio. All the parts are already oriented on 5 plates, with the print settings (PLA). On another printer, import this 3MF into your slicer to keep the orientation. The individual STL files are in `hardware/STL/`.
 
-The STL files are grouped by assembly stage in `hardware/STL/Base/STEP_1` … `STEP_9`. If you are unsure where a part goes, open `hardware/STEP/Base.step` in any CAD viewer.
+Then install the heat-set inserts with a soldering iron: 13 × M3 and 4 × M4 in the base, and 12 × M3 per grip.
 
-| Folder | Files |
-|---|---|
-| `Base/STEP_1` | `support roullement.stl` |
-| `Base/STEP_2` | `CAM_V5.stl` |
-| `Base/STEP_3` | `petit support.stl`, `support_av (1) (1) (1).stl`, `support_av (1) (1) (2) (2).stl` |
-| `Base/STEP_4` | `frein.stl`, `freinX (1).stl`, `rondelle freinX.stl`, `support_vis_frein.stl` |
-| `Base/STEP_5` | `Body10.stl`, `Body_X_Oppose.stl`, `frein V1.stl` |
-| `Base/STEP_6` | `Left_body (1).stl`, `right_body.stl` |
-| `Base/STEP_7` | `spacer_X.stl`, `spacer_Y.stl` |
-| `Base/STEP_8` | `Body_3D_print.stl` (electronics housing), `Passe_cable_languette (2).stl` (cable guide) |
-| `Base/STEP_9` | `Plaque cache soufflet.stl` (boot cover plate) |
-| `Base/Others/Tools` | `V2.stl` (assembly tool) |
-| `Base/Others/Plates` | STL versions of the metal plates, for reference and test fitting. The real plates are 5 mm stainless steel. |
-| `Grip G1/` | `grip_single!piece.stl` (body), `Export_linder_V2_1P.stl` (linker), `jonction_V2.stl` (junction), `plate.stl` (top plate), `Spacer one piece.stl` (PCB spacer) |
-| `Grip G2/` | `Body1.stl` (body), plus the same linker, junction, plate and spacer as G1 |
-| `assembly/` | `Base_main.stl`, `Grip G1.stl`: complete assemblies for visualisation only. Do not print them. |
+### 4.2 Other parts
 
-**Print orientation.** Slicer screenshots showing the intended orientation of each part are in [images/print_orientation/](images/print_orientation/) (`base/`, `grip_g1/`, `grip_g2/`). For example:
+Everything else comes in the [kit](https://polysim.fr/products/polysim-base): metal plates, MJF shaft, silicone boot and programmed boards.
 
-| Electronics housing | Grip body |
-|---|---|
-| ![Housing orientation](images/print_orientation/base/cover.png) | ![Grip body orientation](images/print_orientation/grip_g1/main_body.png) |
+<details>
+<summary><b>Sourcing these parts yourself (not recommended)</b></summary>
 
-**Suggested settings.** These are a starting point, not a validated profile; adjust them to your printer and filament.
+- **MJF/SLS parts** (PA12): main shaft, step-0 support and grip top plate, in `hardware/STL/SLS printing for extra strength/` and `Base/Others/SLS/`. Never print the shaft in FDM.
+- **Base plates**: `hardware/DXF/Base plates/`, laser-cut from 5 mm stainless steel.
+- **Bracket plates**: `hardware/DXF/Bracket/`, cut from 5 mm steel, then bent (see the PNG previews).
+- **Silicone boot**: cast about 30 g of two-part silicone in the mould `hardware/STEP/Solicon_mold.step`.
+- **Electronic boards**: the PCB files are not included in this repository.
 
-| Setting | Structural parts (base) | Grip body |
-|---|---|---|
-| Material | PETG (or ASA / ABS) | PETG or PLA |
-| Layer height | 0.2 mm | 0.16–0.2 mm |
-| Walls | 4 | 3 |
-| Infill | 40 % (gyroid or cubic) | 20 % |
-| Supports | Only where the orientation images show overhangs | Tree supports for the internal cavities, as needed |
+Full list: [bill_of_material_source_yourself.md](bill_of_material_source_yourself.md).
 
-**Heat-set inserts.** Install all inserts before assembly with a soldering iron at the temperature recommended by the insert maker. Press them in straight and flush. The base uses 13 M3 and 4 M4 inserts; each grip uses 12 M3 inserts.
-
-### 4.2 SLS / MJF parts
-
-The **main shaft** carries the grip and transmits all the loads into the gimbal, so it must be made by **MJF or SLS (PA12)**, not FDM.
-
-- `SLS_3DPrint - main axis  -0.2mm + 0.1mm mjf.stl` has been compensated (−0.2 mm / +0.1 mm) for HP Multi Jet Fusion. Use it with an MJF service.
-- `Base/Others/SLS/main_axis.stl` is the nominal geometry.
-- `Base/Others/SLS/fixation_pics.stl` is the support of PDF step 0.
-- `plate grip.stl` is the grip top plate. SLS is recommended for strength.
-
-The original parts were ordered from Sculpteo; any SLS/MJF service works.
-
-### 4.3 Laser-cut stainless plates
-
-`hardware/DXF/Base plates/LASER - Export INOX 5mm.dxf` contains the nine base plates. Order them in **5 mm stainless steel** from a laser-cutting service, and deburr all edges. A black finish (as in the renders) is optional.
-
-### 4.4 Bracket plates
-
-`hardware/DXF/Bracket/` contains the two bracket plates (`P1`, `P2`) in **5 mm steel** for plasma or laser cutting. Both plates are **bent** after cutting. The PNG previews show the bend lines and dimensions, and `hardware/STEP/Bracket.step` shows the final shape. Many cutting services can also do the bending.
-
-### 4.5 Silicone boot
-
-1. Print the mould from `hardware/STEP/Solicon_mold.step`. The original mould was printed in TPU, which makes demoulding easier.
-2. Mix about **30 g** of two-part casting silicone, pour it into the mould and let it cure as the manufacturer specifies.
-3. Demould and trim the boot. `rubber.stl` is the target boot shape, for reference.
-
-### 4.6 Electronic boards
-
-The base needs four custom boards: the base controller, two magnetic encoder boards (X and Y) and the grip board. Their functions and connections are described in §5. **The PCB fabrication files (Gerber, component BOM, placement) are not included in this repository.**
+</details>
 
 ---
 
@@ -309,9 +260,8 @@ Use `hardware/STEP/Grip G1.step` (or `Grip G2.step`) as the reference for part p
 
 ### 7.4 Bracket
 
-1. Have plates P1 and P2 cut and bent (§4.4).
-2. Mount the toggle clamp and assemble the two plates with the M6 screws. See `hardware/STEP/Bracket.step`.
-3. Hook the bracket on the edge of the desk, lock it with the toggle clamp, then fix the base to it at the height you want using the slots.
+1. Mount the toggle clamp and assemble the two plates with the M6 screws. See `hardware/STEP/Bracket.step`.
+2. Hook the bracket on the edge of the desk, lock it with the toggle clamp, then fix the base to it at the height you want using the slots.
 
 ### 7.5 Tuning
 

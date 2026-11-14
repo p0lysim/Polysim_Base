@@ -89,7 +89,7 @@ These totals are summed from the per-step lists of the assembly guide (PDF steps
 ## 5. Extra tools when sourcing yourself
 
 - **Programming:** an ISP programmer (USBasp, or an Arduino Uno as *Arduino as ISP*) with a 6-pin cable, plus the Arduino IDE or PlatformIO. See [manual §6](MANUAL.md#6-programming-the-boards).
-- **Silicone boot:** two-part casting silicone, mixing cups and the printed mould. See [manual §4.5](MANUAL.md#45-silicone-boot).
+- **Silicone boot:** two-part casting silicone, mixing cups and the printed mould. See [manual §4.2](MANUAL.md#42-other-parts).
 
 ## 6. Indicative cost
 
