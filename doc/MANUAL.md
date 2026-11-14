@@ -153,26 +153,13 @@ A USBasp works too: connect its 6-pin cable with pin 1 on MISO.
 - Install every heat-set insert before you start (§4.1).
 - Do not over-tighten screws that go into plastic or inserts. Snug is enough.
 - Check that each axis turns freely after every step. A tight bearing seat or a misaligned plate is much easier to fix early.
-- Sort the hardware by step before you start. The lists below match the illustrated PDF.
+- Sort the hardware by step before you start. The PDF lists the parts for each step.
 
 ### 7.2 Base
 
-Follow [Polysim_Base_Assembly_Guide.pdf](Polysim_Base_Assembly_Guide.pdf). PDF step *n* is on page *n + 1*. The parts needed for each step:
+<a href="Polysim_Base_Assembly_Guide.pdf"><img src="images/assembly_guide_preview.svg" alt="Preview of the base assembly guide (PDF, 11 pages): steps 0, 2, 7 and 9" width="760"></a>
 
-| PDF step | What happens | Parts |
-|---|---|---|
-| **0** | Prepare the main shaft | MJF main shaft ×1, jack socket ×1, magnet ×1, M3 insert ×2, support ×1, M3×10 ×1, M4 square nut ×1, M3×14 ×2, 5×11 bearing ×1 |
-| **1** | Cams | Cam ×2, M3 insert ×4, M4 barrel nut ×2, M3×14 ×4, circlip ×2, 4×12 bearing ×4, 8×16 bearing ×4 |
-| **2** | Side plates and Y-axis bearings | Left and right plates ×2, 17×26 bearing ×2, M4×30 ×6, M3 square nut ×1, M4 square nut ×1, 5×11 bearing ×1, M4 nylon washer ×2, M3 insert ×1, M3×14 ×2 |
-| **3** | First spring, brake and magnet | Spring ×1, M4×25 ×2, M4×60 ×1, M4×10 ×3, M3 insert ×1, M4 insert ×1, M3×4 ×1, felt ×1, magnet ×1, retaining ring ×1, 4×12 bearing ×1 |
-| **4** | Second brake | 17×26 bearing ×1, 4×12 bearing ×1, retaining ring ×1, M4 square nut ×2, M4 insert ×2, M3 insert ×1, felt ×1, M4×18 ×1, M4×12 ×1, M4×25 ×1, M3×4 ×1 |
-| **5** | Second spring, large and small plates | Spring ×1, large plate ×1, small plate ×1, M4×60 ×1, M4×25 ×3, M4×30 ×5, M4 nylon washer ×2, M4 square nut ×2, M4 insert ×1 |
-| **6** | Encoder boards | Encoder X board ×1, encoder Y board ×1, encoder Y cable ×1, M3×8 ×7, M3 nylon washer ×7 |
-| **7** | Base board in the housing | Base board ×1, M3×8 ×4, M3 nylon washer ×4, M3 insert ×4 |
-| **8** | Encoder cables | Base ↔ encoder cables ×2 (see §5) |
-| **9** | Closing | Bottom plate ×1, top plate ×1, dummy plate ×1, silicone boot ×1, M8×90 ×4, M4×25 ×6, M4×20 (or M4×18) ×2, M4×6 (or M4×8) ×5 |
-
-Before you close the base in step 9, connect the female jack wires to the `GRIP_A` terminal of the encoder Y board (§5).
+<a href="Polysim_Base_Assembly_Guide.pdf"><img src="images/open-guide.svg" alt="Open the assembly guide (PDF)" width="312"></a>
 
 ### 7.3 Grip
 

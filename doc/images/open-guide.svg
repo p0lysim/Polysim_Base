@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 312 44" width="312" height="44" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Open the assembly guide (PDF)</title>
+  <rect x="1" y="1" width="310" height="42" rx="21" fill="#1f6feb"/>
+  <g transform="translate(21 10)" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 1 H12.5 L18 6.5 V23 H2 Z"/>
+    <path d="M12.5 1 V6.5 H18"/>
+    <path d="M6 12 H14 M6 16.5 H14"/>
+  </g>
+  <text x="52" y="27.5" font-size="15" font-weight="700" fill="#ffffff">Open the assembly guide · PDF</text>
+</svg>
