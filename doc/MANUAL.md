@@ -157,7 +157,7 @@ A USBasp works too: connect its 6-pin cable with pin 1 on MISO.
 
 ### 7.2 Base
 
-<a href="Polysim_Base_Assembly_Guide.pdf"><img src="images/assembly_guide_preview.svg" alt="Preview of the base assembly guide (PDF, 16 pages): cover, step 2, step 6 wiring and step 9" width="760"></a>
+<a href="Polysim_Base_Assembly_Guide.pdf"><img src="images/assembly_guide_preview.svg" alt="Preview of the base assembly guide (PDF, 20 pages): cover, step 2, wiring overview and final assembly" width="760"></a>
 
 <a href="Polysim_Base_Assembly_Guide.pdf"><img src="images/open-guide.svg" alt="Open the assembly guide (PDF)" width="312"></a>
 
