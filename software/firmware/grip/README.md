@@ -19,4 +19,4 @@ The grip board has no USB port, so it is programmed through its ICSP header:
 3. On a new chip, run **Tools → Burn Bootloader** once to set the fuses.
 4. Run **Sketch → Upload Using Programmer**.
 
-The register map, which is useful for designing your own grip, is in the [manual, §12.3](../../../doc/MANUAL.md#123-grip-protocol-build-your-own-grip).
+The register map, which is useful for designing your own grip, is in the [manual, §11.3](../../../doc/MANUAL.md#113-grip-protocol-build-your-own-grip).

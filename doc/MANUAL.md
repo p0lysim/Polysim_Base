@@ -21,9 +21,8 @@ How to build, set up and use the **Polysim Base**, its **grip** and its **desk b
 8. [Configuration software](#8-configuration-software)
 9. [Using Polysim in simulators](#9-using-polysim-in-simulators)
 10. [Troubleshooting](#10-troubleshooting)
-11. [Known issues and limitations](#11-known-issues-and-limitations)
-12. [Technical reference](#12-technical-reference)
-13. [License and credits](#13-license-and-credits)
+11. [Technical reference](#11-technical-reference)
+12. [License and credits](#12-license-and-credits)
 
 ---
 
@@ -43,7 +42,7 @@ How to build, set up and use the **Polysim Base**, its **grip** and its **desk b
 
 ### 1.2 How it works
 
-Plug the base in over USB-C and Windows sees a standard joystick, with no driver needed. A magnetic sensor reads each axis, and the grip connects through the base. The Polysim app handles calibration and firmware updates. Technical details are in [§12](#12-technical-reference).
+Plug the base in over USB-C and Windows sees a standard joystick, with no driver needed. A magnetic sensor reads each axis, and the grip connects through the base. The Polysim app handles calibration and firmware updates. Technical details are in [§11](#11-technical-reference).
 
 ### 1.3 Safety and disclaimer
 
@@ -109,59 +108,45 @@ Full list: [bill_of_material_source_yourself.md](bill_of_material_source_yoursel
 
 > ✅ **Electronics kit from [polysim.fr](https://polysim.fr)?** The base and grip boards are delivered with their firmware already flashed. Skip this section and go to [§7](#7-assembly).
 
-A blank ATmega32U4 or ATmega328P does **not** contain a bootloader. Each board must be programmed **once** through its ICSP header with an ISP programmer. After that, the base can be updated over USB.
+Each board is programmed once through its 6-pin ICSP header **J1**, here with an Arduino Uno as the programmer. After that, the base updates over USB.
 
-### 6.1 ICSP pinout
+### 6.1 Prepare the Arduino Uno
 
-Both boards use the standard 6-pin AVR ISP pinout. **Pin 1 (MISO) is the square pad.**
+1. In the Arduino IDE, open **File → Examples → 11.ArduinoISP → ArduinoISP** and upload it to the Uno.
+2. Add a **10 µF capacitor** between the Uno's **RESET** and **GND** (− leg on GND), so the Uno does not reset when programming starts.
+3. Wire the Uno to J1 as shown below and select **Tools → Programmer → Arduino as ISP**. Keep the board's own USB cable unplugged: the Uno powers it.
 
-| Pin | Signal | Pin | Signal |
-|---|---|---|---|
-| 1 (square) | MISO | 2 | VCC |
-| 3 | SCK | 4 | MOSI |
-| 5 | RST | 6 | GND |
-
-On the base board, the header sits next to the screw terminal: VCC / MOSI / GND on one row and MISO / SCK / RST on the other.
+A USBasp works too: connect its 6-pin cable with pin 1 on MISO.
 
 ### 6.2 Base board (ATmega32U4)
 
-**Step 1: burn the bootloader (once).**
+<img src="images/icsp_base.svg" alt="ICSP wiring between an Arduino Uno and J1 on the base PCB: D13 to SCK, D12 to MISO, D11 to MOSI, D10 to RST, 5V to VCC, GND to GND, with a 10 µF capacitor between the Uno's RESET and GND" width="900">
 
-1. In the Arduino IDE, select **Tools → Board → Arduino AVR Boards → Arduino Micro**.
-2. Select your programmer (**USBasp** or **Arduino as ISP**) under **Tools → Programmer**.
-3. Connect the programmer to the base ICSP header (§6.1).
-4. Run **Tools → Burn Bootloader**.
+1. **Bootloader (once).** Select **Tools → Board → Arduino Micro**, then run **Tools → Burn Bootloader**. This writes the Caterina bootloader and the fuses (`lfuse 0xFF`, `hfuse 0xD8`, `efuse 0xCB`).
+2. **Firmware over USB.** Remove the ISP wires and connect the base with a USB-C data cable. Open `software/firmware/base/` in PlatformIO and run **Upload**, or flash the prebuilt hex from `software/firmware/base/prebuilt/`:
 
-This writes the Caterina bootloader and the fuses that the Polysim firmware expects (`lfuse 0xFF`, `hfuse 0xD8`, `efuse 0xCB`). You can also use PlatformIO's `bootloader` target with an ISP `upload_protocol` set in `platformio.ini`.
+   ```bash
+   avrdude -p atmega32u4 -c avr109 -P COM5 -b 57600 -D -U flash:w:polysim_base_v0.0.4.hex:i
+   ```
 
-**Step 2: flash the firmware over USB.** Connect the base with a USB-C data cable, then use one of these options.
-
-- **Option A, PlatformIO (from source).** Open `software/firmware/base/` in VS Code with PlatformIO and run **Upload**, or `pio run -t upload` from the command line.
-- **Option B, prebuilt hex with avrdude.** Put the board in bootloader mode by pressing the reset button (SW1); press it twice quickly if the port does not appear. The bootloader stays active for about 8 seconds and shows up as a new COM port. Then run:
-
-  ```bash
-  avrdude -p atmega32u4 -c avr109 -P COM5 -b 57600 -D -U flash:w:polysim_base_v0.0.4.hex:i
-  ```
-
-  Replace `COM5` with the bootloader port. `avrdude` ships with the Arduino IDE and with PlatformIO. The hex is in `software/firmware/base/prebuilt/`.
-
-**Step 3: check.** Open the Windows game controller panel (`Win + R`, then `joy.cpl`). **Polysim Base** should be listed. Later updates can be done from the configuration software (§8.6).
+   Press the reset button (SW1), twice if needed, to start the bootloader for 8 s, and replace `COM5` with its port.
+3. **Check.** `joy.cpl` (`Win + R`) lists **Polysim Base**. Later updates are done from the configuration software (§8.6).
 
 ### 6.3 Grip board (ATmega328P)
 
-The grip board has no USB port. It is programmed only through ICSP.
+<img src="images/icsp_grip.svg" alt="ICSP wiring between an Arduino Uno and J1 on the grip PCB: D13 to SCK, D12 to MISO, D11 to MOSI, D10 to RST, 5V to VCC, GND to GND, with a 10 µF capacitor between the Uno's RESET and GND" width="900">
 
 1. Open `software/firmware/grip/polysim_grip/polysim_grip.ino` in the Arduino IDE.
-2. Select **Tools → Board → Arduino Nano**, **Processor → ATmega328P**, and your programmer.
-3. Connect the programmer to the grip ICSP header (§6.1).
-4. Run **Tools → Burn Bootloader** once. This sets the fuses for the external 16 MHz crystal.
-5. Run **Sketch → Upload Using Programmer**.
-
-The grip firmware only needs the standard `Wire` library.
+2. Select **Tools → Board → Arduino Nano** and **Processor → ATmega328P**.
+3. Run **Tools → Burn Bootloader** once (it sets the 16 MHz crystal fuses), then **Sketch → Upload Using Programmer**.
 
 ---
 
 ## 7. Assembly
+
+<a href="https://www.youtube.com/watch?v=ZJVehHBs4Xg"><img src="images/youtube_base.svg" alt="Video: Flight sim base - assembly tutorial (39:24), on YouTube" width="680"></a>
+
+<a href="https://www.youtube.com/watch?v=2aSrMxbHL8U"><img src="images/youtube_grip.svg" alt="Video: Flight sim grip G1 - Assembly tutorial (11:55), on YouTube" width="680"></a>
 
 ### 7.1 General advice
 
@@ -171,8 +156,6 @@ The grip firmware only needs the standard `Wire` library.
 - Sort the hardware by step before you start. The lists below match the illustrated PDF.
 
 ### 7.2 Base
-
-> 🎬 **Video tutorial:** [Flight sim base — assembly tutorial](https://www.youtube.com/watch?v=ZJVehHBs4Xg) (full assembly, step by step) · [Quick assembly (Short)](https://www.youtube.com/shorts/dEi8qn8T1VA)
 
 Follow [Polysim_Base_Assembly_Guide.pdf](Polysim_Base_Assembly_Guide.pdf). PDF step *n* is on page *n + 1*. The parts needed for each step:
 
@@ -192,8 +175,6 @@ Follow [Polysim_Base_Assembly_Guide.pdf](Polysim_Base_Assembly_Guide.pdf). PDF s
 Before you close the base in step 9, connect the female jack wires to the `GRIP_A` terminal of the encoder Y board (§5).
 
 ### 7.3 Grip
-
-> 🎬 **Video tutorial:** [Flight sim grip G1 — assembly tutorial](https://www.youtube.com/watch?v=2aSrMxbHL8U)
 
 Use `hardware/STEP/Grip G1.step` (or `Grip G2.step`) as the reference for part placement.
 
@@ -254,7 +235,7 @@ The live position square should now cover the whole travel, with the dot centred
 
 Open **Configure** under **Grip** and run the same three steps with the **mini-stick**.
 
-> **Important.** After calibrating the grip, **unplug and replug the base's USB cable** to apply the new calibration (see §11). The grip calibration is stored in the **base**, so it stays with the base when you swap grips.
+> **Important.** After calibrating the grip, **unplug and replug the base's USB cable** to apply the new calibration. The grip calibration is stored in the **base**, so it stays with the base when you swap grips.
 
 ### 8.6 Firmware update
 
@@ -268,20 +249,7 @@ The software writes a log to `%LOCALAPPDATA%\Polysim\Logs\logs.txt`. Include it 
 
 ## 9. Using Polysim in simulators
 
-The base is a standard DirectInput / HID joystick, so any simulator that supports game controllers detects it as **Polysim Base**.
-
-| HID control | Source | Range |
-|---|---|---|
-| X axis | Base, roll | 0–4096 |
-| Y axis | Base, pitch | 0–4096 |
-| Rx axis | Grip mini-stick, horizontal | 0–1023 |
-| Ry axis | Grip mini-stick, vertical | 0–1023 |
-| Button 1 | Grip push button | on/off |
-| Button 2 | Mini-stick click | on/off |
-
-- Bind the axes and buttons in your simulator's control settings. If an axis moves the wrong way, use the simulator's **invert** option.
-- Response curves and dead zones are set in the simulator. The Polysim software does not provide them.
-- The HID descriptor declares 32 buttons, so richer grips can be added later without changing the PC side.
+No driver is needed: your simulator detects the base as a standard joystick named **Polysim Base**. Select it in the control settings and bind the stick, the grip mini-stick and the two grip buttons like any joystick. Inversion, response curves and dead zones are set in the simulator.
 
 ---
 
@@ -294,30 +262,16 @@ The base is a standard DirectInput / HID joystick, so any simulator that support
 | The grip is shown in red | Jack not fully inserted, wiring error on `GRIP_A`, or grip not programmed | Unplug the USB cable, reseat the grip and tighten the ring. Check the VCC / GND / SDA / SCL order on both sides. Reprogram the grip (§6.3). |
 | An axis does not move or jumps | Magnet missing, off-centre or too far from the sensor; encoder cable on the wrong connector | Check the magnet and encoder board mounting (PDF steps 0, 3 and 6) and the `ENC_X` / `ENC_Y` cables. Recalibrate. |
 | The axis range is too small or off-centre | Calibration missing or outdated | Recalibrate (§8.4). Move to every corner in step 1 and let go in step 2. |
-| A new grip calibration has no effect | Known firmware issue | Unplug and replug the base (§11). |
-| The software is very slow to start | No Internet, or the update server does not respond | Wait (up to about 100 s) or connect to the Internet (§11). |
-| The firmware update failed and the base no longer responds | Interrupted download or flash | Reflash over USB with the bootloader (§6.2, option A or B). If the bootloader is damaged, burn it again by ISP. |
+| A new grip calibration has no effect | It is applied when the base restarts | Unplug and replug the base. |
+| The software is very slow to start | No Internet, or the update server does not respond | Wait (up to about 100 s) or connect to the Internet. |
+| The firmware update failed and the base no longer responds | Interrupted download or flash | Reflash over USB with the bootloader (§6.2, step 2). If the bootloader is damaged, burn it again by ISP. |
 | An axis is inverted in game | Different axis convention in the simulator | Invert the axis in the simulator. |
 
 ---
 
-## 11. Known issues and limitations
+## 11. Technical reference
 
-| Issue | Impact | Workaround |
-|---|---|---|
-| Grip calibration is only applied after the base restarts | A new grip calibration seems to have no effect | Unplug and replug the base |
-| The update check at start-up can block the software when the server does not answer | Start-up can take up to about 100 s without Internet | Wait, or connect to the Internet |
-| No integrity check on downloaded firmware | A corrupted download can fail to flash | Reflash manually (§6.2) |
-| Throttle tile shown but not supported | None | — |
-| Windows only | No configuration software on Linux or macOS. As a standard USB HID joystick, the base should also work on other systems (not tested) | Calibrate on a Windows PC; the calibration is stored in the base |
-| Minor typos in the user interface | Cosmetic | — |
-| The standard grip has 2 buttons and 2 axes | Fewer controls than commercial grips | Design your own grip (§12.3) |
-
----
-
-## 12. Technical reference
-
-### 12.1 USB identity
+### 11.1 USB identity
 
 | Field | Value |
 |---|---|
@@ -329,7 +283,7 @@ The base is a standard DirectInput / HID joystick, so any simulator that support
 
 These values are in `software/firmware/base/boards/polysim_base.json`. The configuration software identifies a base by its VID/PID. If you distribute a modified firmware, use your own USB VID/PID and update the software accordingly.
 
-### 12.2 I²C bus
+### 11.2 I²C bus
 
 | Multiplexer channel (PCA9548A @ `0x70`) | Device | Address |
 |---|---|---|
@@ -339,7 +293,7 @@ These values are in `software/firmware/base/boards/polysim_base.json`. The confi
 
 The AS5600 registers used are ZPOS (`0x01`), MPOS (`0x03`), RAW ANGLE (`0x0C`, during calibration) and ANGLE (`0x0E`, in use). The OTP *burn* command is **not** used: the AS5600 allows only three burns, so the calibration lives in the ATmega32U4 EEPROM and is rewritten to the sensor at boot.
 
-### 12.3 Grip protocol (build your own grip)
+### 11.3 Grip protocol (build your own grip)
 
 A grip is any I²C slave at address **`0x55`** that implements these registers. The base writes the register number, then reads 1 or 2 bytes.
 
@@ -352,7 +306,7 @@ A grip is any I²C slave at address **`0x55`** that implements these registers. 
 
 Grip connector: 4-pole jack carrying VCC (5 V), GND, SDA and SCL. The reference implementation is `software/firmware/grip/polysim_grip/polysim_grip.ino`. It uses pins A0 (button), A1 (click), A2/A3 (stick axes) and A4/A5 (SDA/SCL), and drives an LED on D2. To use more buttons, add registers on the grip and read them in `software/firmware/base/src/Grip.cpp`.
 
-### 12.4 Serial protocol (base ⇄ software)
+### 11.4 Serial protocol (base ⇄ software)
 
 ASCII commands over the USB virtual serial port, terminated by `\n`:
 
@@ -381,7 +335,7 @@ Example: `J VE 0` → `ACK J VE 0 0.0.4`. Malformed commands answer `ERROR`; unk
 | `G C1`…`G C4` | Read grip calibration min X, min Y, max X, max Y | integer |
 | `G C5`…`G C8` | Write grip calibration min X, min Y, max X, max Y | `0` = OK |
 
-### 12.5 EEPROM map (ATmega32U4)
+### 11.5 EEPROM map (ATmega32U4)
 
 All values are 16-bit integers, big-endian.
 
@@ -396,7 +350,7 @@ All values are 16-bit integers, big-endian.
 | `0x20–0x21` | AS5600 channel 0 (Y) max |
 | `0x22–0x23` | AS5600 channel 1 (X) max |
 
-### 12.6 Building the firmware from source
+### 11.6 Building the firmware from source
 
 ```bash
 cd software/firmware/base
@@ -408,7 +362,7 @@ The ArduinoJoystickLibrary is already included in `lib/`; there is nothing else 
 
 ---
 
-## 13. License and credits
+## 12. License and credits
 
 - Design files, documentation and Polysim firmware: **CC BY-NC-SA 4.0**. See [LICENSE](../LICENSE).
 - Third-party components keep their own licenses. See [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md).

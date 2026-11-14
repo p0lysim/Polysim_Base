@@ -35,4 +35,4 @@ A blank ATmega32U4 needs the bootloader burned once over ICSP first. See the [ma
 | `src/I2C_Manager.*` | Multiplexer channel selection and register access |
 | `src/SerialPortComManager.*` | Serial command interpreter used by the configuration software |
 
-The serial protocol, I²C registers and EEPROM map are documented in the [manual, §12](../../../doc/MANUAL.md#12-technical-reference).
+The serial protocol, I²C registers and EEPROM map are documented in the [manual, §11](../../../doc/MANUAL.md#11-technical-reference).
